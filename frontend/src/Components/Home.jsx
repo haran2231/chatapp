@@ -231,6 +231,7 @@ const Home = () => {
     }
   };
 
+  
     //fetch contacts for validation
     const fetchContactslist = async () => {
       try {
