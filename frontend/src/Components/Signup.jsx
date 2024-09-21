@@ -43,7 +43,7 @@ const Signup = () => {
   };
 
   const signupnav = () =>{
-    navigate("/signup");
+    navigate("/login");
   }
 
   const addUser = async (username) => {

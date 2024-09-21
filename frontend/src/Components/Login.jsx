@@ -29,7 +29,7 @@ const Signup = () => {
   };
 
   const signupnav = () =>{
-    navigate("/login");
+    navigate("/signup");
   }
 
   // Function to handle form submission
