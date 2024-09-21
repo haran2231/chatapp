@@ -213,7 +213,7 @@ const Home = () => {
       if (auth.currentUser) {
         const userEmail = auth.currentUser.email;
         try {
-          const response = await fetch(`https://chatapp-dt22.onrender.com/${userEmail}/${selectedContact}`, {
+          const response = await fetch(`https://chatapp-dt22.onrender.com/clear-chat/${userEmail}/${selectedContact}`, {
             method: 'DELETE',
           });
           if (response.ok) {
