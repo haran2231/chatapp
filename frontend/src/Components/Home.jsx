@@ -29,13 +29,13 @@ const Home = () => {
     if (auth.currentUser) {
       const userEmail = auth.currentUser.email;
       try {
-        const response = await fetch(`http://localhost:5000/contacts/${userEmail}`);
+        const response = await fetch(`https://chatapp-dt22.onrender.com/contacts/${userEmail}`);
         if (response.ok) {
           const data = await response.json();
           setContacts(data.map(contact => contact.contactEmail));
 
           // Fetch unread message count for each contact
-          const unreadResponse = await fetch(`http://localhost:5000/unread-count/${userEmail}`);
+          const unreadResponse = await fetch(`https://chatapp-dt22.onrender.com/unread-count/${userEmail}`);
           if (unreadResponse.ok) {
             const unreadData = await unreadResponse.json();
             setUnreadCounts(unreadData);
@@ -64,13 +64,13 @@ const Home = () => {
         if (auth.currentUser) {
           const userEmail = auth.currentUser.email;
           try {
-            const response = await fetch(`http://localhost:5000/messages/${userEmail}/${selectedContact}`);
+            const response = await fetch(`https://chatapp-dt22.onrender.com/messages/${userEmail}/${selectedContact}`);
             if (response.ok) {
               const data = await response.json();
               setMessages(data);
 
               // Mark messages as read when selected
-              await fetch(`http://localhost:5000/mark-read/${userEmail}/${selectedContact}`, {
+              await fetch(`https://chatapp-dt22.onrender.com/mark-read/${userEmail}/${selectedContact}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' }
               });
@@ -97,7 +97,7 @@ const Home = () => {
       if (auth.currentUser) {
         const userEmail = auth.currentUser.email;
         try {
-          const response = await fetch('http://localhost:5000/send-message', {
+          const response = await fetch('https://chatapp-dt22.onrender.com/send-message', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -113,7 +113,7 @@ const Home = () => {
           if (response.ok) {
             const result = await response.json();
             setMessage("");
-            const messagesResponse = await fetch(`http://localhost:5000/messages/${userEmail}/${selectedContact}`);
+            const messagesResponse = await fetch(`https://chatapp-dt22.onrender.com/messages/${userEmail}/${selectedContact}`);
             if (messagesResponse.ok) {
               const data = await messagesResponse.json();
               setMessages(data);
@@ -137,7 +137,7 @@ const Home = () => {
         const userEmail = auth.currentUser.email;
 
         try {
-          const response = await fetch('http://localhost:5000/add-contact', {
+          const response = await fetch('https://chatapp-dt22.onrender.com/add-contact', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ userEmail, contactEmail }),
@@ -182,7 +182,7 @@ const Home = () => {
     if (auth.currentUser) {
       const userEmail = auth.currentUser.email;
       try {
-        const response = await fetch(`http://localhost:5000/messages/${userEmail}/${selectedContact}`);
+        const response = await fetch(`https://chatapp-dt22.onrender.com/messages/${userEmail}/${selectedContact}`);
         if (response.ok) {
           const data = await response.json();
           const unreadMessages = data.filter(msg => msg.status !== 'read');
