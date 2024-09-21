@@ -178,7 +178,7 @@ const Home = () => {
             }
           }
         }
-      }
+      } 
 
       if (!contactFound) {
         alert('Contact is not our buddy'); // Notify if contact not found
