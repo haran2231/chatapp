@@ -103,6 +103,7 @@ const Signup = () => {
           >
             Register Now !!!
           </button>
+          <br></br>
           <button
             onClick={() => {
               signupnav();

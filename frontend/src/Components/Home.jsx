@@ -207,6 +207,31 @@ const Home = () => {
     }
   };
 
+  //clear chat
+  const handleClearChat = async () => {
+    if (selectedContact) {
+      if (auth.currentUser) {
+        const userEmail = auth.currentUser.email;
+        try {
+          const response = await fetch(`http://localhost:5000/clear-chat/${userEmail}/${selectedContact}`, {
+            method: 'DELETE',
+          });
+          if (response.ok) {
+            setMessages([]);
+            const data = await response.json();
+            alert(data.message);
+            fetchContacts();
+          } else {
+            console.error('Failed to clear chat');
+          }
+        } catch (error) {
+          console.error('Error clearing chat:', error);
+        }
+      }
+    }
+  };
+
+
   useEffect(() => {
     const intervalId = setInterval(checkForNewMessages, 5000); // Check every 5 seconds
     return () => clearInterval(intervalId);
@@ -281,6 +306,12 @@ const Home = () => {
                   className="px-4 py-2 ml-2 text-lg font-semibold text-white transition duration-300 bg-blue-600 rounded-lg hover:bg-blue-700"
                 >
                   Send
+                </button>
+                <button
+                  onClick={handleClearChat}
+                  className="px-4 py-2 ml-2 text-lg font-semibold text-white transition duration-300 bg-red-600 rounded-lg hover:bg-red-700"
+                >
+                  Clear Chat
                 </button>
               </div>
             </div>
