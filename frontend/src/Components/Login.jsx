@@ -69,7 +69,7 @@ const Signup = () => {
           />
         </div>
         <div>
-            <p className="text-center text-red-700">If You forget the password. Kindly contact admin@123@gmail.com to reset you password.</p>
+            <p className="text-center text-red-700">If You forget the password. Kindly contact haran2231@gmail.com to reset you password. I will send password reset link to your mail.</p>
         </div>
         <div className="justify-center py-2">
           <button
