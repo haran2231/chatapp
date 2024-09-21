@@ -231,6 +231,19 @@ const Home = () => {
     }
   };
 
+    //fetch contacts for validation
+    const fetchContactslist = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/contactsfetch');
+        const data = await response.json();
+        // console.log(data);
+        setuserContacts(data); // Store the fetched contacts in state
+        // console.log(usercontacts);
+      } catch (error) {
+        console.error("Error fetching contacts:", error);
+      }
+    };
+  
 
   useEffect(() => {
     const intervalId = setInterval(checkForNewMessages, 5000); // Check every 5 seconds
