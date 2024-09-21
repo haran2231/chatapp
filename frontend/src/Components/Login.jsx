@@ -71,14 +71,13 @@ const Signup = () => {
         <div>
             <p className="text-center text-red-700">If You forget the password. Kindly contact admin@123@gmail.com to reset you password.</p>
         </div>
-        <div className="flex justify-center">
+        <div className="justify-center py-2">
           <button
             onClick={handleSubmit}
             className="w-full py-2 text-lg font-semibold text-white transition duration-500 transform bg-indigo-600 rounded-lg hover:bg-indigo-700 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-300"
           >
             Login Now !!!
           </button>
-<br></br>
           <button
             onClick={signupnav}
             className="w-full py-2 text-lg font-semibold text-white transition duration-500 transform bg-indigo-600 rounded-lg hover:bg-indigo-700 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-300"

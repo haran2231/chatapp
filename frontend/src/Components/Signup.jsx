@@ -93,7 +93,7 @@ const Signup = () => {
             className="w-full px-4 py-2 text-lg text-gray-800 bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
         </div>
-        <div className="flex justify-center">
+        <div className="justify-center py-2">
           <button
             onClick={() => {
               handleSubmit();
@@ -103,7 +103,7 @@ const Signup = () => {
           >
             Register Now !!!
           </button>
-          <br></br>
+          
           <button
             onClick={() => {
               signupnav();
