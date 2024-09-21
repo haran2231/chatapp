@@ -12,7 +12,7 @@ const Home = () => {
   const [selectedContact, setSelectedContact] = useState("");
   const [newMessageNotifications, setNewMessageNotifications] = useState({});
   const navigate = useNavigate();
-  const [userContacts, setuserContacts] = useState([]);
+  const [usercontacts, setuserContacts] = useState([]);
 
 
   // User auto logout
