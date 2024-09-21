@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.chat-container {
+  max-height: 400px;
+  overflow-y: scroll;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.chat-message {
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.my-message {
+  background-color: #d1f7c4;
+  text-align: right;
+}
+
+.other-message {
+  background-color: #f1f1f1;
+  text-align: left;
+}
+
+form {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+form input {
+  flex: 1;
+  padding: 10px;
+}
+
+form button {
+  padding: 10px;
+}
+@keyframes blink {
+  0%, 100% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: rgba(255, 255, 0, 0.5); /* Change to your desired color */
+  }
+}
+
+.blink {
+  animation: blink 1s infinite;
+}
