@@ -82,7 +82,7 @@ const Signup = () => {
             onClick={signupnav}
             className="w-full py-2 my-2 text-lg font-semibold text-white transition duration-500 transform bg-indigo-600 rounded-lg hover:bg-indigo-700 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-300"
           >
-            Register Acoount !!!
+            Register Account !!!
           </button>
         </div>
       </div>
