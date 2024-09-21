@@ -47,7 +47,7 @@ const Signup = () => {
   }
 
   const addUser = async (username) => {
-    alert(username);
+    // alert(username);
     try {
       const response = await fetch('https://chatapp-dt22.onrender.com/api/users', {
         method: 'POST',
