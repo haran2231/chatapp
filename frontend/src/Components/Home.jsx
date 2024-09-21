@@ -21,6 +21,8 @@ const Home = () => {
       if (!user) {
         navigate("/login");
       }
+
+     
     });
 
     return () => unsubscribe();
@@ -55,6 +57,7 @@ const Home = () => {
 
   useEffect(() => {
     fetchContacts();
+    fetchContactslist();
     const intervalId = setInterval(fetchContacts, 10000);
     return () => clearInterval(intervalId);
   }, []);
@@ -134,32 +137,57 @@ const Home = () => {
 
   // Contact add
   const handleAddContact = async () => {
-    if (contactEmail.trim() !== "") {
-      if (auth.currentUser) {
-        const userEmail = auth.currentUser.email;
+    if (usercontacts.length > 0) {
+      let contactFound = false; // Flag to check if the contact is found
 
-        try {
-          const response = await fetch('https://chatapp-dt22.onrender.com/add-contact', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ userEmail, contactEmail }),
-          });
+      for (const contact of usercontacts) { // Use for...of instead of forEach
+        // alert(`Name: ${contact.username}`);
 
-          if (response.ok) {
-            setContactEmail(""); // Clear input field
-            fetchContacts(); // Refresh contact list
-          } else {
-            console.error('Failed to add contact:', await response.text());
+        if (contact.username === contactEmail) {
+          contactFound = true; // Mark contact as found
+
+          if (contactEmail.trim() !== "") {
+            if (auth.currentUser) {
+              const userEmail = auth.currentUser.email;
+
+              try {
+                const response = await fetch('http://localhost:5000/add-contact', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ userEmail, contactEmail }),
+                });
+
+                if (response.status === 400) {
+                  const data = await response.json();
+                  alert(data.message); // Show error message from server
+                } else if (response.status === 201) {
+                  // const data = await response.json();
+                  // alert(data);
+                  setContactEmail(""); // Clear input field
+                  setContacts((prevContacts) => {
+                    return prevContacts.includes(contactEmail)
+                      ? prevContacts
+                      : [...prevContacts, contactEmail];
+                  });
+                } else {
+                  console.error('Failed to add contact:', await response.text());
+                }
+              } catch (error) {
+                console.error('Error adding contact:', error);
+              }
+            }
           }
-        } catch (error) {
-          console.error('Error adding contact:', error);
         }
       }
+
+      if (!contactFound) {
+        alert('Contact is not our buddy'); // Notify if contact not found
+      }
     } else {
-      alert('Please enter a valid contact email');
+      alert('No contacts available'); // Handle case when there are no contacts
     }
   };
-
+  
   // Logout
   const logout = () => {
     signOut(auth).then(() => {
